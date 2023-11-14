@@ -3,6 +3,12 @@ package Java.Search2DMatrix;
 class Solution {
   public boolean searchMatrix(int[][] matrix, int target) {
         int rows = matrix.length;
+         //generate a 2d int array, that holds many arrays of 2 integers in java
+        
+
+
+        
+
         int columns = matrix[0].length; // Assuming all rows have the same number of columns
         //start on first row
         for (int i = 0; i < rows; i++) {
@@ -13,4 +19,5 @@ class Solution {
         }        
         return false;
     }
+
 }
