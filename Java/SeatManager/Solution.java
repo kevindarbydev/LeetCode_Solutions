@@ -1,11 +1,7 @@
 package Java.SeatManager;
 
 import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.PriorityQueue;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 
 public class Solution {
     public static void main(String[] args) {
@@ -58,50 +54,3 @@ class SeatManager {
         map.put(seatNumber, false);
     }
 }
-
-//public class Solution {
-//
-
-//
-//    static class SeatManager {
-//        LinkedHashMap<Integer, Boolean> map = new LinkedHashMap<>();
-//
-//        PriorityQueue<Integer> tablesAvail = new PriorityQueue<>();
-//
-//        final int CAPACITY;
-//
-//        int lastTableSat = 1;
-//
-//        public SeatManager(int n) {
-//            map = IntStream.range(1, n + 1)
-//                    .boxed()
-//                    .collect(Collectors.toMap(i -> i, i -> false, (a, b) -> b, LinkedHashMap::new));
-//            CAPACITY = n;
-//        }
-//
-//
-//        public int reserve() {
-//            if (map.isEmpty()){ return -1;}
-//            if (!tablesAvail.isEmpty()){
-//                return tablesAvail.poll();
-//            }
-//            if (!map.get(lastTableSat)){
-//                map.put(lastTableSat, true);
-//                return lastTableSat;
-//            }
-//            for (int i = lastTableSat; i <= CAPACITY; i++){
-//                if (!map.get(i)){
-//                    map.put(i,true);
-//                    lastTableSat = i;
-//                    return i;
-//                }
-//            }
-//            return -1;
-//        }
-//
-//        public void unreserve(int seatNumber) {
-//           tablesAvail.add(seatNumber);
-//        }
-//    }
-//}
-
