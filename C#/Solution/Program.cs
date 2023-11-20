@@ -10,9 +10,28 @@ namespace Program
     {
         static void Main(string[] args)
         {        
-            int[] input = { 0, 1, 2, 2, 3, 0, 4, 2 };
+            string input1 = "ABCABC";
+            string input2 = "ABC";
 
-            RemoveElement(input, 2);
+            GcdOfStrings(input1,input2);
+        }
+
+        public static string GcdOfStrings(string str1, string str2)
+        {
+            if (str1 == "" || str2 == "") return "";
+            if (str1[0] != str2[0]) return "";
+
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < str1.Length -1 ; i++)
+            {
+                if (str1.ElementAt(i) == str2.ElementAt(i))
+                {
+                    sb.Append(str2.ElementAt(i));
+                }
+            }
+
+            return sb.ToString();
         }
 
         public static int RemoveElement(int[] nums, int val)
