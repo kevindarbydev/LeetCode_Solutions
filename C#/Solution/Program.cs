@@ -23,43 +23,22 @@ namespace Program
        
         public static ListNode RemoveNthFromEnd(ListNode head, int n)
         {
-            //not the best solution but oh well
-            var x = head;
-            int counter = 0;
-            while (x != null)
-            {
+            ListNode fast = head;
+            ListNode slow = head;
 
-                x = x.next;
-                counter++;
-            }
-            if (n == 1 && counter == 1)
+            for (int i = 0; i < n; i++)
             {
-                head = null;
-                return head;
+                fast = fast.next;
             }
-            if (n == 1 && counter == 2)
+            if (fast == null) return head.next;
+
+            while (fast.next != null)
             {
-                head.next = null;
-                return head;
+                slow = slow.next;
+                fast = fast.next;
             }
-            if (n == counter)
-            {
-                head = head.next;
-                return head;
-            }
-            int whenToStop = counter - n - 1;
-            counter = 0; //reset counter
-            ListNode replica = head;
-            while (replica.next != null)
-            {
-                if (counter == whenToStop)
-                {
-                    replica.next = replica.next.next;
-                    break;
-                }
-                replica = replica.next;
-                counter++;
-            }
+            //skip over a node, effectively removing it
+            slow.next = slow.next.next;
             return head;
         }
 
