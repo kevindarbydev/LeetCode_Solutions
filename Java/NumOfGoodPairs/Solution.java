@@ -13,6 +13,7 @@ public class Solution {
             for (int i = 0; i < nums.length; i++) {
                 for (int j = 1; j < nums.length; j++) {
                     int[] pair = new int[2];
+                    //first index is first occurence, second index is last occurence
                     pair[0] = i;
                     pair[1] = j;
                     if (Objects.equals(nums[i], nums[j])){
