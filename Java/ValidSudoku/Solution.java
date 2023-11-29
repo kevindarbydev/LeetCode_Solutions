@@ -1,6 +1,6 @@
-package Java;
+package Java.ValidSudoku;
 
-public class ValidSudoku {
+public class Solution {
 
     public static void main(String[] args) {
         //generate char[][] input for leetcode question 36. Valid Sudoku
