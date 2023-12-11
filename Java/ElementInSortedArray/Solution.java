@@ -7,22 +7,13 @@ public class Solution {
     // Leetcode daily - #1287 - Easy
 
     public static int findSpecialInteger(int[] arr){
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < arr.length; i++) {
-            map.merge(arr[i],1, Integer::sum);
-        }
+        int len = arr.length;
+        int threshold = len / 4;
 
-        int hsf = Integer.MIN_VALUE;
-        int hvsf = Integer.MIN_VALUE;
-        for (int x : map.keySet()){
-            int currVal = map.get(x);
-            if (currVal > hvsf){
-                hsf = x;
-                hvsf = map.get(x);
-            }
+        for (int i = 0; i < len - threshold; i++) {
+            if (arr[i] == arr[i + threshold]) return arr[i];
         }
-
-        return hsf;
+        return -1;
     }
 
     public static void main(String[] args) {
