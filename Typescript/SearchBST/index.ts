@@ -10,12 +10,20 @@ class TreeNode {
 }
 
 function searchBST(root: TreeNode | null, val: number): TreeNode | null {
-    
+    if (root.val === val) return root
+    if (root.val > val) return searchBST(root.left, val)
+    if (root.val < val) return searchBST(root.right, val)
 
     return null;
 };
 
 function main(){
-    console.log("here")
+    var root = new TreeNode(4)
+    root.left = new TreeNode(2)
+    root.right = new TreeNode(7)
+    root.left.left = new TreeNode(1)
+    root.left.right = new TreeNode(3)
+    var val = 2
+    console.log(searchBST(root, val))
 }
 main()

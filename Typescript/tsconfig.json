@@ -4,5 +4,6 @@
     "module": "CommonJS",
     "outDir": "./dist"
   },
-  "include": ["*.ts", "./RemoveDupesFromSortedArray/*.ts"]
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
 }
