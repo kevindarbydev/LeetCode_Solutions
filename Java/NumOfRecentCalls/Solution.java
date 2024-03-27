@@ -1,7 +1,7 @@
 package Java.NumOfRecentCalls;
 
+import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Queue;
 
 public class Solution {
     public static void main(String[] args) {
@@ -11,20 +11,18 @@ public class Solution {
 
 }
 class RecentCounter {
-    private int counter;
-    private Queue<Integer> tsQueue; //timestamp queue
+    private Deque<Integer> tsDeque; //timestamp dequeue
     public RecentCounter() {
-        tsQueue = new LinkedList<>();
-        counter = 0;
+        tsDeque = new LinkedList<>();
     }
 
     public int ping(int t) {
-        tsQueue.add(t);
+        tsDeque.add(t);
 
         int range = t - 3000;
-        while (!tsQueue.isEmpty() && tsQueue.peek() < range){
-            tsQueue.poll();
+        while (!tsDeque.isEmpty() && tsDeque.peekFirst() < range){
+            tsDeque.removeFirst();
         }
-        return tsQueue.size();
+        return tsDeque.size();
     }
 }
