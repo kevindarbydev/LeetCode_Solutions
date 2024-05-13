@@ -15,7 +15,8 @@ First leetcode Hard question - no chatgpt
 
     //solves first 2 examples, and 26/320 test cases
     // probably need a different approach
-    public static int trap(int[] height) {
+    // update 5/13, now solves 39/322
+ public int trap(int[] height) {
         int rainCollectable = 0;
         boolean trappable = false;
         boolean isFirstPass = true;
@@ -29,6 +30,7 @@ First leetcode Hard question - no chatgpt
                     rainCollectable++;
                 } else if (heightOfLeftWall <= height[i]){
                     trappable = false;
+                    heightOfLeftWall = 0;
                 } else if (trappable){
                     int amountToAdd = heightOfLeftWall - height[i];
                     rainCollectable+=amountToAdd;
@@ -41,10 +43,7 @@ First leetcode Hard question - no chatgpt
                 }
             }
             previousNum = height[i];
-
-
         }
-
         return rainCollectable;
     }
 
