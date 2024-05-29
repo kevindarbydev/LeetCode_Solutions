@@ -16,41 +16,57 @@ First leetcode Hard question - no chatgpt
     //solves first 2 examples, and 26/320 test cases
     // probably need a different approach
     // update 5/13, now solves 39/322
- public int trap(int[] height) {
+
+    public static int trap(int[] height) {
         int rainCollectable = 0;
         boolean trappable = false;
-        boolean isFirstPass = true;
-        int previousNum = 0;
         int heightOfLeftWall = 0;
+        int previousHeight = -1;
         for (int i = 0; i < height.length; i++) {
-            if (!isFirstPass){
-                if (height[i] < previousNum  && !trappable && heightOfLeftWall != 0){
+            if (!trappable) {
+                if (height[i] > 0) {
                     heightOfLeftWall = height[i];
-                    trappable = true;
-                    rainCollectable++;
-                } else if (heightOfLeftWall <= height[i]){
-                    trappable = false;
-                    heightOfLeftWall = 0;
-                } else if (trappable){
-                    int amountToAdd = heightOfLeftWall - height[i];
-                    rainCollectable+=amountToAdd;
+                    if (i != height.length -1) {
+                        if (checkAhead(height, i, i + 1)) {
+                            trappable = true;
+                        }
+                    }
                 }
-            } else{
-                isFirstPass = false;
-                if (height[i] > 0){
-                    heightOfLeftWall = height[i];
-                    trappable = true;
+            } else {
+                if (heightOfLeftWall > height[i]) {
+                    rainCollectable += heightOfLeftWall - height[i];
+                } else {
+
+                    if (height[i] > heightOfLeftWall){
+                        continue;
+                    } else if (height[i] < heightOfLeftWall){
+                        heightOfLeftWall = height[i];
+                        rainCollectable += height[i] - heightOfLeftWall;
+
+                    }
+
+
+                    if (i != height.length -1) {
+                        if (checkAhead(height, i, i + 1)) {
+                            trappable = false;
+                        }
+                    } else trappable = false;
                 }
             }
-            previousNum = height[i];
+            previousHeight = height[i];
         }
+
         return rainCollectable;
     }
 
+    public static boolean checkAhead(int[] arr, int currentIndex, int indexToCheck) {
+        return arr[currentIndex] > arr[indexToCheck];
+    }
 
 
     public static void main(String[] args) {
-        System.out.println(trap(new int[]{4,2,0,3,2,5}));
+   //   System.out.println("output of 420 array: " + trap(new int[]{4,2,0,3,2,5}));
+      System.out.println("output of 0102 array: " + trap(new int[]{0,1,0,2,1,0,1,3,2,1,2,1}));
 
     }
 
