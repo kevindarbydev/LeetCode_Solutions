@@ -16,12 +16,12 @@ First leetcode Hard question - no chatgpt
     //solves first 2 examples, and 26/320 test cases
     // probably need a different approach
     // update 5/13, now solves 39/322
+    // 5/29 - 44/322
 
     public static int trap(int[] height) {
         int rainCollectable = 0;
         boolean trappable = false;
         int heightOfLeftWall = 0;
-        int previousHeight = -1;
         for (int i = 0; i < height.length; i++) {
             if (!trappable) {
                 if (height[i] > 0) {
@@ -53,7 +53,6 @@ First leetcode Hard question - no chatgpt
                     } else trappable = false;
                 }
             }
-            previousHeight = height[i];
         }
 
         return rainCollectable;
@@ -63,38 +62,8 @@ First leetcode Hard question - no chatgpt
         return arr[currentIndex] > arr[indexToCheck];
     }
 
-
     public static void main(String[] args) {
-   //   System.out.println("output of 420 array: " + trap(new int[]{4,2,0,3,2,5}));
       System.out.println("output of 0102 array: " + trap(new int[]{0,1,0,2,1,0,1,3,2,1,2,1}));
 
     }
-
-    //    public static int trapHashmapSolution(int[] height){
-//        HashMap<Integer,Integer> valueStore = new HashMap<>();
-//        int rainCollectable = 0;
-//        int heightOfLeftWall = 0;
-//        boolean isFirstPass = true;
-//        for (int i = 0; i < height.length; i++) {
-//            valueStore.put(i,height[i]);
-//        }
-//
-//        for (int i = 0; i < valueStore.size(); i++) {
-//            if (isFirstPass){
-//                if (valueStore.get(i) > 0){
-//                    heightOfLeftWall = valueStore.get(i);
-//                }
-//                isFirstPass = false;
-//                continue;
-//            }
-//            if (heightOfLeftWall != 0) {
-//                if (valueStore.get(i) < heightOfLeftWall) {
-//                    int amountToAdd = heightOfLeftWall - valueStore.get(i);
-//                    rainCollectable += amountToAdd;
-//                }
-//            }
-//
-//        }
-//        return rainCollectable;
-//    }
 }
