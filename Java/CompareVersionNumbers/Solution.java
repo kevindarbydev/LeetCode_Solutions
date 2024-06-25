@@ -21,18 +21,10 @@ public class Solution {
                 return -1;
             }
         }
-
-        // If we reach here, all parts are equal, compare the lengths
-        if (version1Parts.length > version2Parts.length) {
-            return 1; // version1 is greater
-        } else if (version2Parts.length > version1Parts.length) {
-            return -1; // version2 is greater
-        } else {
-            return 0; // versions are equal
-        }
+        return 0; // versions are equal
     }
 
     public static void main(String[] args) {
-        System.out.println(compareVersion("7.5.2.4","7.5.3"));
+        System.out.println(compareVersion("7.5.2.4", "7.5.3"));
     }
 }
