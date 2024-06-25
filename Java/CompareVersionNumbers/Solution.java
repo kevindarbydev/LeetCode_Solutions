@@ -2,13 +2,8 @@ package Java.CompareVersionNumbers;
 
 public class Solution {
     public static int compareVersion(String version1, String version2) {
-        StringBuilder version1sb = new StringBuilder();
-        StringBuilder version2sb = new StringBuilder();
         String[] version1Parts = version1.split("\\.");
         String[] version2Parts = version2.split("\\.");
-
-        int v1Counter = 0;
-        int v2Counter = 0;
 
         int maxParts = Math.max(version1Parts.length, version2Parts.length);
         for (int i = 0; i < maxParts; i++) {
