@@ -2,7 +2,7 @@ package Java.FindCenterOfStarGraph;
 
 public class Solution {
     public static void main(String[] args) {
-        int[][] input = {{1,2}, {5,1}, {1,3}, {1,4}};
+        int[][] input = {{1, 2}, {5, 1}, {1, 3}, {1, 4}};
 
         System.out.println(findCenter(input));
     }
@@ -12,10 +12,7 @@ public class Solution {
     public static int findCenter(int[][] edges) {
         int numOne = edges[0][0];
         int numTwo = edges[0][1];
-
-        if (edges[1][0] == numOne || edges[1][0] == numTwo){
-            return edges[1][0];
-        } else return edges[1][1];
+        return (edges[1][0] == numOne || edges[1][0] == numTwo) ? edges[1][0] : edges[1][1];
     }
 //    public static int findCenter(int[][] edges) {
 //        ArrayList<Integer> numStore = new ArrayList<>(2);
