@@ -18,7 +18,7 @@ public class Solution {
     }
 
     public static ListNode reverseList(ListNode head) {
-        if (head == null) return new ListNode();
+        if (head == null) return null;
 
         ArrayList<ListNode> nodeArr = new ArrayList<>();
         while (head != null){
@@ -34,7 +34,7 @@ public class Solution {
            current.next = nodeArr.get(i);
            current = current.next;
         }
-        System.out.println(Objects.toString(newHead));
+
         return newHead;
     }
     public static ListNode reverse(ListNode head) {
