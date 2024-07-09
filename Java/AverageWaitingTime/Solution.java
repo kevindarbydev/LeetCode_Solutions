@@ -17,7 +17,7 @@ Return the average waiting time of all customers. Solutions within 10-5 from the
 
      */
     public static void main(String[] args) {
-     int[][] input = { {1,2}, {2,5}, {4,3} };
+        int[][] input = {{1, 2}, {2, 5}, {4, 3}};
         System.out.println(averageWaitingTime(input));
     }
 
