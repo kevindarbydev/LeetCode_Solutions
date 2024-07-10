@@ -14,7 +14,19 @@ public class Solution {
         y.next = a;
         a.next = b;
         b.next = c;
-        System.out.println(reverseList(x));
+        System.out.println("Printing list before");
+        printList(x);
+        reverse(x);
+        System.out.println("Printing list after");
+        printList(a);
+
+    }
+    public static void printList(ListNode node) {
+        while (node != null) {
+            System.out.print(node.val + ",");
+            node = node.next;
+        }
+        System.out.println();
     }
 
     public static ListNode reverseList(ListNode head) {
