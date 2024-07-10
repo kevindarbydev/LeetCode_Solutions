@@ -6,10 +6,10 @@ public class Solution {
         int totalCost = 0;
 
         if (cost[0] <= cost[1]) {
+
             startIdx = 0;
         } else startIdx = 1;
 
-        int givenCost;
         for (int i = startIdx; i < cost.length -1;) {
             if (i == cost.length -1 || i == cost.length -2){
                 return totalCost;
@@ -26,11 +26,12 @@ public class Solution {
         int[] input = {1,100,1,1,1,100,1,1,100,1};
         int[] input2 = {10,15,20};
         int[] input3 = {0,1,1,1};
-        System.out.println(minCostClimbingStairs(input));
+        System.out.println(minCostClimbingStairs(input3));
     }
 
 
     public static int determineStepCount(int givenIdx, int[] cost) {
+        if (givenIdx >= cost.length) return 0;
         if (cost.length <= 3) {
             if (givenIdx + 1 >= cost.length - 1) {
                 return 1;
