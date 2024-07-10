@@ -30,43 +30,70 @@ public class Solution {
     }
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        if (l1.next == null && l2.next == null){
-            return new ListNode(l1.val + l2.val);
-        }
-        StringBuilder sb1 = new StringBuilder();
-        StringBuilder sb2 = new StringBuilder();
-        while (l1 != null){
-            sb1.append(l1.val);
-            l1 = l1.next;
-        }
-        while (l2 != null) {
-            sb2.append(l2.val);
-            l2 = l2.next;
-        }
-        System.out.println("sb1 -> " + sb1.reverse());
-        System.out.println("sb2 -> " + sb2.reverse());
+        ListNode dummy = new ListNode();
+        ListNode res = dummy;
+        int total = 0, carry = 0;
 
-        int total = Integer.parseInt(String.valueOf(sb1.reverse())) + Integer.parseInt(String.valueOf(sb2.reverse()));
-        String totalAsString = String.valueOf(total);
+        while (l1 != null || l2 != null || carry != 0) {
+            total = carry;
 
-        ListNode newHead = null;
-        ListNode current = null;
-
-        for (int i = totalAsString.length()-1; i >= 0; i--) {
-            int digit = Character.getNumericValue(totalAsString.charAt(i));
-            ListNode newNode = new ListNode(digit);
-            if (newHead == null) { //first pass
-                newHead = newNode;
-                current = newNode;
-            } else {
-                current.next = newNode;
-                current = newNode;
+            if (l1 != null) {
+                total += l1.val;
+                l1 = l1.next;
             }
+            if (l2 != null) {
+                total += l2.val;
+                l2 = l2.next;
+            }
+
+            int num = total % 10;
+            carry = total / 10;
+            dummy.next = new ListNode(num);
+            dummy = dummy.next;
         }
-        System.out.println("printing");
-        printList(newHead);
-        return newHead;
+
+        return res.next;
     }
+    // my own solution, works for first test cases, but doesnt account
+    //for carrying the result of addition
+//    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+//        if (l1.next == null && l2.next == null){
+//            return new ListNode(l1.val + l2.val);
+//        }
+//        StringBuilder sb1 = new StringBuilder();
+//        StringBuilder sb2 = new StringBuilder();
+//        while (l1 != null){
+//            sb1.append(l1.val);
+//            l1 = l1.next;
+//        }
+//        while (l2 != null) {
+//            sb2.append(l2.val);
+//            l2 = l2.next;
+//        }
+//        System.out.println("sb1 -> " + sb1.reverse());
+//        System.out.println("sb2 -> " + sb2.reverse());
+//
+//        int total = Integer.parseInt(String.valueOf(sb1.reverse())) + Integer.parseInt(String.valueOf(sb2.reverse()));
+//        String totalAsString = String.valueOf(total);
+//
+//        ListNode newHead = null;
+//        ListNode current = null;
+//
+//        for (int i = totalAsString.length()-1; i >= 0; i--) {
+//            int digit = Character.getNumericValue(totalAsString.charAt(i));
+//            ListNode newNode = new ListNode(digit);
+//            if (newHead == null) { //first pass
+//                newHead = newNode;
+//                current = newNode;
+//            } else {
+//                current.next = newNode;
+//                current = newNode;
+//            }
+//        }
+//        System.out.println("printing");
+//        printList(newHead);
+//        return newHead;
+//    }
 
 
 }
