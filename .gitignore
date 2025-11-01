@@ -3,3 +3,5 @@
 
 *.csproj
 *.sln
+
+/out
