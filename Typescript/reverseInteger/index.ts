@@ -1,11 +1,11 @@
 function reverse(x: number): number {
   const MIN = -2147483648;
   const MAX = 2147483648;
-  var response = x.toString();
+  var inputNumberAsString = x.toString();
   let stringBuilder = "";
 
-  for (let i = response.length - 1; i >= 0; i--) {
-    stringBuilder = stringBuilder.concat(response.charAt(i));
+  for (let i = inputNumberAsString.length - 1; i >= 0; i--) {
+    stringBuilder = stringBuilder.concat(inputNumberAsString.charAt(i));
   }
 
   if (x < 0) {
